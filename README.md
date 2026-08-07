@@ -14,6 +14,10 @@ background image**. Nothing else changes — the core setting keeps handling lig
 
 Solves [TYPO3 forge issue #106760](https://forge.typo3.org/issues/106760).
 
+![The TYPO3 backend login screen with a bright background image in light mode on the left and a dark background image in dark mode on the right](Documentation/Images/example.png)
+
+*The same login screen in light and dark mode, each with its own background image.*
+
 ## Installation
 
 ```bash
