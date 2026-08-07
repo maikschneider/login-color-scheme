@@ -1,0 +1,10 @@
+.idea
+.phpunit.cache
+.php-cs-fixer.cache
+coverage/
+php-cs-fixer.xml
+phpstan.xml
+public
+!Resources/Public
+var/
+vendor

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2026-08-07T00:00:00Z" product-name="login_color_scheme">
+		<header/>
+		<body>
+			<trans-unit id="config.backgroundImageDark">
+				<source>Login background image (dark): Image used on the backend login screen while the dark color scheme is active. Same syntax as the core setting [BE][loginBackgroundImage], e.g. "EXT:my_sitepackage/Resources/Public/Images/login-dark.jpg" or "fileadmin/login-dark.jpg".</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

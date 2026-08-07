@@ -1,0 +1,42 @@
+name: Tests
+
+on:
+  push:
+    branches:
+      - main
+      - 'renovate/**'
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  unit-tests:
+    name: Unit (TYPO3 ${{ matrix.typo3-version }}, PHP ${{ matrix.php-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        typo3-version: ["13.4", "14.3"]
+        php-version: ["8.2", "8.3", "8.4"]
+        exclude:
+          # TYPO3 v14 requires PHP 8.3 or higher
+          - typo3-version: "14.3"
+            php-version: "8.2"
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          coverage: none
+
+      - name: Install Composer dependencies
+        run: composer update --no-progress --with=typo3/cms-core:"^${{ matrix.typo3-version }}"
+
+      - name: Run unit tests
+        run: composer ci:tests:unit

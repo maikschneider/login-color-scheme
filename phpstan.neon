@@ -1,0 +1,36 @@
+parameters:
+	parallel:
+		maximumNumberOfProcesses: 5
+
+	level: 8
+
+	bootstrapFiles:
+		- vendor/autoload.php
+
+	paths:
+		- Classes
+		- Configuration
+		- Tests
+
+	typo3:
+		requestGetAttributeMapping:
+			route: TYPO3\CMS\Backend\Routing\Route|null
+
+	# The extension resolves image URIs through whichever core API the installed
+	# TYPO3 version provides. Whichever branch is analysed, the other one looks
+	# dead to PHPStan, so the version switch in the URI resolver is exempt.
+	reportUnmatchedIgnoredErrors: false
+
+	ignoreErrors:
+		-
+			identifier: function.alreadyNarrowedType
+			path: Classes/Service/LoginBackgroundImageStyles.php
+		-
+			identifier: function.impossibleType
+			path: Classes/Service/LoginBackgroundImageStyles.php
+		-
+			identifier: deadCode.unreachable
+			path: Classes/Service/LoginBackgroundImageStyles.php
+		-
+			identifier: staticMethod.notFound
+			path: Classes/Service/LoginBackgroundImageStyles.php
