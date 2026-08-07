@@ -65,20 +65,7 @@ settings. Both are covered, and the higher specificity means the block wins over
 The URL is passed through `GeneralUtility::sanitizeCssVariableValue()`, the same escaping
 core uses, and the block is emitted with a CSP nonce.
 
-### Why not a single SVG with both images embedded?
-
-A popular workaround is to build one SVG that base64-embeds a light and a dark image and
-toggles between them with an internal `@media (prefers-color-scheme)` rule, then point
-`loginBackgroundImage` at it. It works without any extension, but it has real costs:
-
-- every visitor downloads **both** images, base64-inflated by ~33%
-- the SVG has to be regenerated whenever either source image changes
-- an SVG has no access to the page, so a user who pinned dark mode in their user settings
-  still gets the light image on the login refresh dialog
-- image processing (crop, resize, WebP) no longer applies
-
-The CSS approach avoids all four: two plain image files, only the matching one is
-downloaded, and both color scheme mechanisms are honored.
+Two plain image files, and the browser only downloads the one it needs.
 
 ## Scope
 
